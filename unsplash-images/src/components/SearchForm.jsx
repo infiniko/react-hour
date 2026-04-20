@@ -17,7 +17,7 @@ const SearchForm = () => {
       <form className="search-form" onSubmit={handleSubmit}>
         <input
           type="text"
-          className="form-input"
+          className="form-input search-input"
           name="search"
           placeholder="search"
         />
