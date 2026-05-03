@@ -14,7 +14,6 @@ const PaginationContainer = () => {
     searchParams.set("page", pageNumber);
     navigate(`${pathname}?${searchParams.toString()}`);
   };
-  console.log(pages);
   if (pageCount < 2) return null;
   return (
     <div className="mt-16 flex justify-end">
