@@ -6,6 +6,10 @@ const themes = {
   garden: "garden",
 };
 
+const getUserFromLocalStorage = () => {
+  const user = localStorage.getItem("user") || null;
+};
+
 const getThemeFromLocalStorage = () => {
   const theme = localStorage.getItem("theme") || themes.garden;
   document.documentElement.setAttribute("data-theme", theme);
@@ -13,7 +17,7 @@ const getThemeFromLocalStorage = () => {
 };
 
 const initialState = {
-  user: { username: "infiniko" },
+  user: getUserFromLocalStorage(),
   theme: getThemeFromLocalStorage(),
 };
 
@@ -22,10 +26,14 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     loginUser: (state, action) => {
-      console.log(action);
+      const user = { ...action.payload.user, token: action.payload.jwt };
+      state.user = user;
+      localStorage.setItem("user", JSON.stringify(user));
     },
     logoutUser: (state) => {
-      console.log("dada");
+      state.user = null;
+      localStorage.removeItem("user");
+      toast.success("Logged out successfully");
     },
     toggleTheme: (state) => {
       const { garden, abyss } = themes;
