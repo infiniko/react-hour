@@ -25,7 +25,7 @@ const PaginationContainer = () => {
             handlePageNumber(prevPage);
           }}
         >
-          prev
+          PREV
         </button>
         {pages.map((p) => {
           return (
@@ -45,7 +45,7 @@ const PaginationContainer = () => {
             handlePageNumber(nextPage);
           }}
         >
-          next
+          NEXT
         </button>
       </div>
     </div>
