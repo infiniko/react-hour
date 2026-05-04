@@ -7,11 +7,22 @@ import { addItem } from "../features/cart/cartSlice";
 
 const url = "/products";
 
-export const loader = async ({ params }) => {
-  const response = await customFetch(`${url}/${params.id}`);
-  const product = response.data.data;
-  return { product };
+const singleProductQuery = (id) => {
+  return {
+    queryKey: ["singleProduct", id],
+    queryFn: () => customFetch.get(`${url}/${id}`),
+  };
 };
+
+export const loader =
+  (queryClient) =>
+  async ({ params }) => {
+    const response = await queryClient.ensureQueryData(
+      singleProductQuery(params.id),
+    );
+    const product = response.data.data;
+    return { product };
+  };
 
 const SingleProduct = () => {
   const dispatch = useDispatch();
