@@ -2,7 +2,6 @@ import { fetchUsers, saveUser } from "@/utils/actions";
 import { NextRequest, NextResponse } from "next/server";
 
 export const GET = async (req: NextRequest) => {
-  console.log(req.nextUrl.searchParams);
   const users = await fetchUsers();
   return Response.json({ users });
 };
