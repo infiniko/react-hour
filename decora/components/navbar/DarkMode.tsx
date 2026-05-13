@@ -18,7 +18,7 @@ export default function DarkMode() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon">
+        <Button variant="outline" size="icon-lg">
           <HugeiconsIcon
             icon={Sun}
             size={32}

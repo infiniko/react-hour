@@ -20,7 +20,7 @@ const config: runtime.GetPrismaClientConfig = {
   "clientVersion": "7.8.0",
   "engineVersion": "3c6e192761c0362d496ed980de936e2f3cebcd3a",
   "activeProvider": "postgresql",
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Get a free hosted Postgres database in seconds: `npx create-db`\n\ngenerator client {\n  provider = \"prisma-client\"\n  output   = \"../lib/generated/client\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Get a free hosted Postgres database in seconds: `npx create-db`\n\ngenerator client {\n  provider = \"prisma-client\"\n  output   = \"../lib/generated/client\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nmodel Product {\n  id          String   @id @default(uuid())\n  name        String\n  company     String\n  description String\n  featured    Boolean\n  image       String\n  price       Int\n  createdAt   DateTime @default(now())\n  updatedAt   DateTime @updatedAt\n  clerkId     String\n}\n",
   "runtimeDataModel": {
     "models": {},
     "enums": {},
@@ -32,10 +32,10 @@ const config: runtime.GetPrismaClientConfig = {
   }
 }
 
-config.runtimeDataModel = JSON.parse("{\"models\":{},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"Product\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"company\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"featured\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"image\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"price\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"clerkId\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 config.parameterizationSchema = {
-  strings: JSON.parse("[]"),
-  graph: "AAAA"
+  strings: JSON.parse("[\"where\",\"Product.findUnique\",\"Product.findUniqueOrThrow\",\"orderBy\",\"cursor\",\"Product.findFirst\",\"Product.findFirstOrThrow\",\"Product.findMany\",\"data\",\"Product.createOne\",\"Product.createMany\",\"Product.createManyAndReturn\",\"Product.updateOne\",\"Product.updateMany\",\"Product.updateManyAndReturn\",\"create\",\"update\",\"Product.upsertOne\",\"Product.deleteOne\",\"Product.deleteMany\",\"having\",\"_count\",\"_avg\",\"_sum\",\"_min\",\"_max\",\"Product.groupBy\",\"Product.aggregate\",\"AND\",\"OR\",\"NOT\",\"id\",\"name\",\"company\",\"description\",\"featured\",\"image\",\"price\",\"createdAt\",\"updatedAt\",\"clerkId\",\"equals\",\"in\",\"notIn\",\"lt\",\"lte\",\"gt\",\"gte\",\"not\",\"contains\",\"startsWith\",\"endsWith\",\"set\",\"increment\",\"decrement\",\"multiply\",\"divide\"]"),
+  graph: "NQsQDRwAACgAMB0AAAQAEB4AACgAMB8BAAAAASABACkAISEBACkAISIBACkAISMgACoAISQBACkAISUCACsAISZAACwAISdAACwAISgBACkAIQEAAAABACABAAAAAQAgDRwAACgAMB0AAAQAEB4AACgAMB8BACkAISABACkAISEBACkAISIBACkAISMgACoAISQBACkAISUCACsAISZAACwAISdAACwAISgBACkAIQADAAAABAAgAwAABQAwBAAAAQAgAwAAAAQAIAMAAAUAMAQAAAEAIAMAAAAEACADAAAFADAEAAABACAKHwEAAAABIAEAAAABIQEAAAABIgEAAAABIyAAAAABJAEAAAABJQIAAAABJkAAAAABJ0AAAAABKAEAAAABAQgAAAkAIAofAQAAAAEgAQAAAAEhAQAAAAEiAQAAAAEjIAAAAAEkAQAAAAElAgAAAAEmQAAAAAEnQAAAAAEoAQAAAAEBCAAACwAwAQgAAAsAMAofAQAyACEgAQAyACEhAQAyACEiAQAyACEjIAAzACEkAQAyACElAgA0ACEmQAA1ACEnQAA1ACEoAQAyACECAAAAAQAgCAAADgAgCh8BADIAISABADIAISEBADIAISIBADIAISMgADMAISQBADIAISUCADQAISZAADUAISdAADUAISgBADIAIQIAAAAEACAIAAAQACACAAAABAAgCAAAEAAgAwAAAAEAIA8AAAkAIBAAAA4AIAEAAAABACABAAAABAAgBRUAAC0AIBYAAC4AIBcAADEAIBgAADAAIBkAAC8AIA0cAAAaADAdAAAXABAeAAAaADAfAQAbACEgAQAbACEhAQAbACEiAQAbACEjIAAcACEkAQAbACElAgAdACEmQAAeACEnQAAeACEoAQAbACEDAAAABAAgAwAAFgAwFAAAFwAgAwAAAAQAIAMAAAUAMAQAAAEAIA0cAAAaADAdAAAXABAeAAAaADAfAQAbACEgAQAbACEhAQAbACEiAQAbACEjIAAcACEkAQAbACElAgAdACEmQAAeACEnQAAeACEoAQAbACEOFQAAIAAgGAAAJwAgGQAAJwAgKQEAAAABKgEAAAAEKwEAAAAELAEAAAABLQEAAAABLgEAAAABLwEAAAABMAEAJgAhMQEAAAABMgEAAAABMwEAAAABBRUAACAAIBgAACUAIBkAACUAICkgAAAAATAgACQAIQ0VAAAgACAWAAAjACAXAAAgACAYAAAgACAZAAAgACApAgAAAAEqAgAAAAQrAgAAAAQsAgAAAAEtAgAAAAEuAgAAAAEvAgAAAAEwAgAiACELFQAAIAAgGAAAIQAgGQAAIQAgKUAAAAABKkAAAAAEK0AAAAAELEAAAAABLUAAAAABLkAAAAABL0AAAAABMEAAHwAhCxUAACAAIBgAACEAIBkAACEAIClAAAAAASpAAAAABCtAAAAABCxAAAAAAS1AAAAAAS5AAAAAAS9AAAAAATBAAB8AIQgpAgAAAAEqAgAAAAQrAgAAAAQsAgAAAAEtAgAAAAEuAgAAAAEvAgAAAAEwAgAgACEIKUAAAAABKkAAAAAEK0AAAAAELEAAAAABLUAAAAABLkAAAAABL0AAAAABMEAAIQAhDRUAACAAIBYAACMAIBcAACAAIBgAACAAIBkAACAAICkCAAAAASoCAAAABCsCAAAABCwCAAAAAS0CAAAAAS4CAAAAAS8CAAAAATACACIAIQgpCAAAAAEqCAAAAAQrCAAAAAQsCAAAAAEtCAAAAAEuCAAAAAEvCAAAAAEwCAAjACEFFQAAIAAgGAAAJQAgGQAAJQAgKSAAAAABMCAAJAAhAikgAAAAATAgACUAIQ4VAAAgACAYAAAnACAZAAAnACApAQAAAAEqAQAAAAQrAQAAAAQsAQAAAAEtAQAAAAEuAQAAAAEvAQAAAAEwAQAmACExAQAAAAEyAQAAAAEzAQAAAAELKQEAAAABKgEAAAAEKwEAAAAELAEAAAABLQEAAAABLgEAAAABLwEAAAABMAEAJwAhMQEAAAABMgEAAAABMwEAAAABDRwAACgAMB0AAAQAEB4AACgAMB8BACkAISABACkAISEBACkAISIBACkAISMgACoAISQBACkAISUCACsAISZAACwAISdAACwAISgBACkAIQspAQAAAAEqAQAAAAQrAQAAAAQsAQAAAAEtAQAAAAEuAQAAAAEvAQAAAAEwAQAnACExAQAAAAEyAQAAAAEzAQAAAAECKSAAAAABMCAAJQAhCCkCAAAAASoCAAAABCsCAAAABCwCAAAAAS0CAAAAAS4CAAAAAS8CAAAAATACACAAIQgpQAAAAAEqQAAAAAQrQAAAAAQsQAAAAAEtQAAAAAEuQAAAAAEvQAAAAAEwQAAhACEAAAAAAAE0AQAAAAEBNCAAAAABBTQCAAAAATUCAAAAATYCAAAAATcCAAAAATgCAAAAAQE0QAAAAAEAAAAABRUABhYABxcACBgACRkACgAAAAAABRUABhYABxcACBgACRkACgECAQIDAQUGAQYHAQcIAQkKAQoMAgsNAwwPAQ0RAg4SBBETARIUARMVAhoYBRsZCw"
 }
 
 async function decodeBase64AsWasm(wasmBase64: string): Promise<WebAssembly.Module> {
@@ -70,8 +70,8 @@ export interface PrismaClientConstructor {
    * const prisma = new PrismaClient({
    *   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL })
    * })
-   * // Fetch zero or more Users
-   * const users = await prisma.user.findMany()
+   * // Fetch zero or more Products
+   * const products = await prisma.product.findMany()
    * ```
    * 
    * Read more in our [docs](https://pris.ly/d/client).
@@ -94,8 +94,8 @@ export interface PrismaClientConstructor {
  * const prisma = new PrismaClient({
  *   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL })
  * })
- * // Fetch zero or more Users
- * const users = await prisma.user.findMany()
+ * // Fetch zero or more Products
+ * const products = await prisma.product.findMany()
  * ```
  * 
  * Read more in our [docs](https://pris.ly/d/client).
@@ -188,7 +188,15 @@ export interface PrismaClient<
     extArgs: ExtArgs
   }>>
 
-    
+      /**
+   * `prisma.product`: Exposes CRUD operations for the **Product** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Products
+    * const products = await prisma.product.findMany()
+    * ```
+    */
+  get product(): Prisma.ProductDelegate<ExtArgs, { omit: OmitOpts }>;
 }
 
 export function getPrismaClientClass(): PrismaClientConstructor {

@@ -15,7 +15,7 @@ function LinksDropdown() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant={"outline"} className="flex gap-4 max-w-25">
+        <Button variant={"outline"} className="flex gap-4 max-w-25" size="lg">
           <FaAlignLeft className="w-6 h-6" />
         </Button>
       </DropdownMenuTrigger>
