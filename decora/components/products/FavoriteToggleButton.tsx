@@ -10,7 +10,7 @@ function FavoriteToggleButton({
   return (
     <Button size="icon" variant="outline" className="p-2 cursor-pointer">
       <FaHeart
-        className={`opacity-85 ${layout === "grid" ? "text-white" : "text-mist-800"}`}
+        className={`opacity-85 ${layout === "grid" ? "text-white" : ""}`}
       />
     </Button>
   );
