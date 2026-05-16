@@ -39,7 +39,7 @@ async function AdminProductsPage() {
               <TableRow key={productId}>
                 <TableCell>
                   <Link
-                    href={`/products.${productId}`}
+                    href={`/products/${productId}`}
                     className="underline text-muted-foreground tracking-wide capitalize"
                   >
                     {name}
