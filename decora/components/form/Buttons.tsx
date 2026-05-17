@@ -81,17 +81,19 @@ export const IconButton = ({ actionType }: { actionType: actionType }) => {
   );
 };
 
-export const CardSignInButton = () => {
+export const CardSignInButton = ({ layout }: { layout: string }) => {
   return (
     <SignInButton mode="modal">
       <Button
         type="button"
-        size="icon"
+        size="icon-lg"
         variant="outline"
-        className="p-2 cursor-pointer"
+        className="cursor-pointer transition-transform duration-300 ease-in-out hover:scale-110"
         asChild
       >
-        <FaHeart />
+        <FaHeart
+          className={`h-4 w-4 animate-spin ${layout === "grid" ? "text-white" : ""}`}
+        />
       </Button>
     </SignInButton>
   );
@@ -119,7 +121,7 @@ export const CardSubmitButton = ({
         />
       ) : isFavorite ? (
         <FaHeart
-          className={`opacity-85 ${layout === "grid" ? "text-accent" : ""}`}
+          className={`opacity-85 ${layout === "grid" ? "text-white" : ""}`}
         />
       ) : (
         <FaRegHeart

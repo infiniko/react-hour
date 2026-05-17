@@ -10,4 +10,7 @@
  */
 export type * from './models/Product'
 export type * from './models/Favorite'
+export type * from './models/Review'
+export type * from './models/Cart'
+export type * from './models/CartItem'
 export type * from './commonInputTypes'

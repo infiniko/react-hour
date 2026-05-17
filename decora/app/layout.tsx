@@ -20,7 +20,7 @@ const geistMono = Geist_Mono({
 });
 
 const inconsolata = Inconsolata({
-  subsets: ["latin"],
+  subsets: ["latin-ext"],
 });
 
 export const metadata: Metadata = {

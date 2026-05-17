@@ -1,10 +1,14 @@
 import BreadCrumbs from "@/components/single-product/BreadCrumbs";
-import { fetchSingleProduct } from "@/utils/actions";
+import { fetchSingleProduct, findExistingReview } from "@/utils/actions";
 import Image from "next/image";
 import { formatCurrency } from "@/utils/format";
 import FavoriteToggleButton from "@/components/products/FavoriteToggleButton";
 import AddToCart from "@/components/single-product/AddToCart";
 import ProductRating from "@/components/single-product/ProductRating";
+import ShareButton from "@/components/single-product/ShareButton";
+import SubmitReview from "@/components/reviews/SubmitReview";
+import ProductReviews from "@/components/reviews/ProductReviews";
+import { auth } from "@clerk/nextjs/server";
 
 async function SingleProductPage({
   params,
@@ -15,6 +19,11 @@ async function SingleProductPage({
   const product = await fetchSingleProduct(id);
   const { name, image, company, description, price } = product;
   const dollarsAmount = formatCurrency(price);
+
+  const { userId } = await auth();
+  const reviewDoesNotExist =
+    userId && !(await findExistingReview(userId, product.id));
+
   return (
     <section>
       <BreadCrumbs name={product.name} />
@@ -34,7 +43,10 @@ async function SingleProductPage({
         <div>
           <div className="flex gap-x-8 items-center">
             <h1 className="capitalize text-3xl font-bold">{name} </h1>
-            <FavoriteToggleButton productId={id} layout="single" />
+            <div className="flex items-center gap-x-2">
+              <FavoriteToggleButton productId={id} layout="single" />
+              <ShareButton productId={id} name={name} />
+            </div>
           </div>
           <ProductRating productId={id} />
           <h4 className="text-xl mt-2">{company}</h4>
@@ -45,6 +57,9 @@ async function SingleProductPage({
           <AddToCart productId={id} />
         </div>
       </div>
+      {/* REVIEW SECTION */}
+      <ProductReviews productId={id} />
+      {reviewDoesNotExist && <SubmitReview productId={id} />}
     </section>
   );
 }
