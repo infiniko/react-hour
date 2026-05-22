@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { FaCartShopping } from "react-icons/fa6";
+import { fetchCartItems } from "@/utils/actions";
 
-function CartButton() {
-  const numItemsInCart = 9;
+async function CartButton() {
+  const numItemsInCart = await fetchCartItems();
   return (
     <Button
       asChild

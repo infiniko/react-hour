@@ -36,7 +36,7 @@ export function SubmitButton({
             icon={ReloadIcon}
             className="mr-2 h-4 w-4 animate-spin"
           />
-          Please wait...
+          Please wait
         </>
       ) : (
         <>{text}</>
@@ -89,10 +89,9 @@ export const CardSignInButton = ({ layout }: { layout: string }) => {
         size="icon-lg"
         variant="outline"
         className="cursor-pointer transition-transform duration-300 ease-in-out hover:scale-110"
-        asChild
       >
-        <FaHeart
-          className={`h-4 w-4 animate-spin ${layout === "grid" ? "text-white" : ""}`}
+        <FaRegHeart
+          className={`h-4 w-4 ${layout === "grid" ? "text-white hover:text-white" : ""}`}
         />
       </Button>
     </SignInButton>
@@ -117,7 +116,7 @@ export const CardSubmitButton = ({
       {pending ? (
         <HugeiconsIcon
           icon={ReloadIcon}
-          className={`h-4 w-4 animate-spin ${layout === "grid" ? "text-white" : ""}`}
+          className={`w-4 h-4 animate-spin ${layout === "grid" ? "text-white" : ""}`}
         />
       ) : isFavorite ? (
         <FaHeart
@@ -129,5 +128,15 @@ export const CardSubmitButton = ({
         />
       )}
     </Button>
+  );
+};
+
+export const ProductSignInButton = () => {
+  return (
+    <SignInButton mode="modal">
+      <Button type="button" size={"default"} className="mt-8 capitalize">
+        please sign in
+      </Button>
+    </SignInButton>
   );
 };
