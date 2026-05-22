@@ -7,12 +7,12 @@ function Hero() {
     <section className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
       <div>
         <h1 className="max-w-2xl font-bold text-4xl tracking-tight sm:text-6xl">
-          changing the way people shop
+          your home, beautifully redefined
         </h1>
         <p className="mt-8 max-w-xl text-lg leading-8 text-muted-foreground">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores in
-          voluptate maxime nesciunt blanditiis saepe. Quas, quasi est earum
-          aperiam possimus.
+          From the first look to the last detail, every Decora piece is made to
+          complement your lifestyle. Discover furniture that's durable, elegant,
+          and designed to grow with you.
         </p>
         <Button asChild size="lg" className="mt-10">
           <Link href="/products">Our Products</Link>

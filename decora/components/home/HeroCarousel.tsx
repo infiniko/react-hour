@@ -1,3 +1,4 @@
+"use client";
 import {
   Carousel,
   CarouselContent,
@@ -7,6 +8,7 @@ import {
 } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
+import Autoplay from "embla-carousel-autoplay";
 import hero1 from "@/public/images/image01.jpg";
 import hero2 from "@/public/images/image02.jpg";
 import hero3 from "@/public/images/image03.jpg";
@@ -22,6 +24,7 @@ function HeroCarousel() {
           align: "start",
           loop: true,
         }}
+        plugins={[Autoplay({ delay: 3000 })]}
       >
         <CarouselContent>
           {carouselImages.map((image, index) => {

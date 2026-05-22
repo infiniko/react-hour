@@ -1,13 +1,12 @@
 import Link from "next/link";
 import { Button } from "../ui/button";
-import { GiSofa } from "react-icons/gi";
 import { FaChair } from "react-icons/fa6";
 
 function Logo() {
   return (
-    <Button size={"icon-lg"} asChild>
+    <Button size="icon-lg" className="p-6">
       <Link href="/">
-        <FaChair className="w-6 h-6" />
+        <FaChair />
       </Link>
     </Button>
   );

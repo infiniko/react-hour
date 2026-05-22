@@ -17,7 +17,7 @@ function PriceInput({ defaultValue }: FormInputNumberProps) {
         name={name}
         type="number"
         min={0}
-        defaultValue={defaultValue || 100}
+        defaultValue={defaultValue}
         required
       />
     </div>
