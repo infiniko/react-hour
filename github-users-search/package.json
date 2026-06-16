@@ -10,11 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@apollo/client": "^4.2.3",
     "@fontsource-variable/jetbrains-mono": "^5.2.8",
     "@remixicon/react": "^4.9.0",
     "@tailwindcss/vite": "^4.3.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "graphql": "^16.14.2",
     "next-themes": "^0.4.6",
     "radix-ui": "^1.6.0",
     "react": "^19.2.6",
