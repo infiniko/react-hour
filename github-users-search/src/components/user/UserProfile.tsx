@@ -6,6 +6,7 @@ import ForkedRepos from "../charts/ForkedRepos";
 import PopularRepos from "../charts/PopularRepos";
 import UsedLangauges from "../charts/UsedLangauges";
 import Loading from "./Loading";
+import type { User } from "../../types";
 
 type UserProfileProps = {
   userName: string;
@@ -31,7 +32,7 @@ const UserProfile = ({ userName }: UserProfileProps) => {
     followers,
     following,
     gists,
-  } = data.user;
+  } = data.user as User;
 
   return (
     <div>
