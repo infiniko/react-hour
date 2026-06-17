@@ -3,7 +3,7 @@ import SearchForm from "./components/form/SearchForm";
 import UserProfile from "./components/user/UserProfile";
 
 const App = () => {
-  const [userName, setUserName] = useState("infiniko");
+  const [userName, setUserName] = useState("torvalds");
   return (
     <main className="mx-auto max-w-6xl px-8 py-20">
       <SearchForm userName={userName} setUserName={setUserName} />
