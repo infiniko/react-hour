@@ -1,9 +1,18 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Roboto } from "next/font/google";
+import {
+  Geist,
+  Geist_Mono,
+  Roboto,
+  Outfit,
+  Nunito_Sans,
+} from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import { ThemeProvider } from "./theme-provider";
 
-const roboto = Roboto({ subsets: ["latin"], variable: "--font-sans" });
+const nunitoSansHeading = Nunito_Sans({subsets:['latin'],variable:'--font-heading'});
+
+const outfit = Outfit({subsets:['latin'],variable:'--font-sans'});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,12 +42,21 @@ export default function RootLayout({
         "antialiased",
         geistSans.variable,
         geistMono.variable,
-        roboto.className,
-        roboto.variable,
+        outfit.className,
+        "font-sans",
+        outfit.variable,
+        nunitoSansHeading.variable,
       )}
     >
       <body className="min-h-full" suppressHydrationWarning>
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
