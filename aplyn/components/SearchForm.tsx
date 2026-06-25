@@ -45,10 +45,10 @@ const SearchForm = () => {
         defaultValue={search}
       />
       <Select name="jobStatus" defaultValue={jobStatus}>
-        <SelectTrigger>
+        <SelectTrigger className="w-full">
           <SelectValue />
         </SelectTrigger>
-        <SelectContent>
+        <SelectContent className="py-2.5">
           {["all", ...Object.values(JobStatus)].map((jobStatus) => {
             return (
               <SelectItem key={jobStatus} value={jobStatus}>
